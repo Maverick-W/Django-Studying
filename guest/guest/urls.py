@@ -20,7 +20,9 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
     path('index/',views.index),  #添加index路径配置
+    path('accounts/login/',views.index),
     path('login_action/',views.login_action),
     path('event_manage/',views.event_manage),
 ]
