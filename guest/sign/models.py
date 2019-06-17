@@ -23,8 +23,8 @@ class Guest(models.Model):
     sign = models.BooleanField()#签到状态
     create_time = models.DateTimeField(auto_now=True)#创建时间
 
-class Meta:
-    unique_together = ("event", "phone")
+    class Meta:
+        unique_together = ("event", "phone")
 
-def __str__(self):
-    return self.realname
+    def __str__(self):
+        return self.realname
