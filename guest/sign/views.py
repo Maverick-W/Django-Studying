@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-
+from sign.models import Event
 
 @csrf_exempt  #申请表单处理
 # Create your views here.
@@ -28,6 +28,8 @@ def login_action(request):
 #发布会管理
 @login_required
 def event_manage(request):
+    event_list = Event.objects.all()
     #username = request.COOKIES.get('user','')  #读取浏览器cookies
     username = request.session.get('user', '')  #读取浏览器session
-    return render(request,"event_manage.html",{'user': username})
+    return render(request,"event_manage.html",{'user': username,
+                                               'event':event_list})

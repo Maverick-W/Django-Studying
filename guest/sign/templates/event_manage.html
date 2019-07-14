@@ -1,11 +1,62 @@
-<html>
+<html lang='zh-CN'>
   <head>
-      <title>Event Manage Page</title>
+      {% load bootstrap3 %}  <!--加载 bootstrap3应用 -->
+      {% bootstrap3_css %}
+      {% bootstrap3_javascript %}
+
+
+      <title>Guest Manage</title>
   </head>
-  <body>
-      <h1>Login Success!</h1>
-  <div style="float:right;">
-      <a>嘿！{{ user }} 欢迎 </a><hr/>
-  </div>
+  <body role='document'>
+      <!-- 导航栏 -->
+      <nav class= 'navbar navbar-inverse navbar-fixed-top'>
+          <div class='container'>
+              <div class='navbar-header'>
+                  <a class='navbar-brand' href="/event_manage/">Guest manage System</a>
+              </div>
+              <div id='navbar' class='collapse navbar-collapse'>
+                  <u1 class='nav navbar-nav'>
+                      <1i class='active'><a href='#'>发布会</a></1i>
+                      <1i><a href="/guest_manage/">嘉宾</a></1i>
+                  </u1>
+                  <u1 class='nav navbar-nav navbar-right'>
+                      <1i><a href='#'>{{user}}</a></1i>
+                      <1i><a href="/logout/">退出</a><1i>
+                    </u1>
+                </div>
+            </div>
+        </nav>
+
+
+
+
+
+
+        <!-- 发布会列表 -->
+
+        <div class='row' style='padding-top: 80px;'>
+            <div class='col-md-6'>
+                <table class='table table-striped'>
+                    <thead>
+                        <tr>
+                            <th>id</th><th>名称</th><th>状态</th><th>地址</th><th>时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                          <tr>
+                              <td>{{ event.id }}</td>
+                              <td>{{ event.name }}</td>
+                              <td>{{ event.status }}</td>
+                              <td>{{ event.address }}</td>
+                              <td>{{ event.start_time }}</td>
+                          </tr>
+                         {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
   </body>
 </html>
