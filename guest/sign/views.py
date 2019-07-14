@@ -28,7 +28,7 @@ def login_action(request):
 #发布会管理
 @login_required
 def event_manage(request):
-    event_list = Event.objects.all()
+    event_list = Event.objects.all()  #导入Model的Event类，通过Event.objects.all()查询所有发布会对象
     #username = request.COOKIES.get('user','')  #读取浏览器cookies
     username = request.session.get('user', '')  #读取浏览器session
     return render(request,"event_manage.html",{'user': username,
